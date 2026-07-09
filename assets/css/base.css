@@ -1,0 +1,188 @@
+/* ==========================================================================
+   BASE — reset, typography, global utilities
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+* { margin: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color var(--dur-med) var(--ease-out), color var(--dur-med) var(--ease-out);
+}
+
+img, picture, video, svg { display: block; max-width: 100%; }
+
+a { color: inherit; text-decoration: none; }
+
+button, input, textarea, select {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+button { cursor: pointer; }
+
+ul, ol { list-style: none; padding: 0; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  color: var(--text-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--brass-glow);
+  color: var(--text-primary);
+}
+
+/* ---- Layout helpers ---- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--sp-5);
+}
+
+@media (min-width: 900px) {
+  .container { padding-inline: var(--sp-7); }
+}
+
+.section {
+  padding-block: var(--sp-9);
+  position: relative;
+}
+
+@media (max-width: 720px) {
+  .section { padding-block: var(--sp-8); }
+}
+
+/* ---- Typography helpers ---- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--accent);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+.section-head {
+  max-width: 640px;
+  margin-bottom: var(--sp-7);
+}
+
+.section-head h2 {
+  font-size: var(--fs-2xl);
+  margin-top: var(--sp-3);
+}
+
+.section-head p {
+  margin-top: var(--sp-4);
+  font-size: var(--fs-md);
+  color: var(--text-secondary);
+  max-width: 52ch;
+}
+
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- Viewfinder corner-bracket motif (signature element) ---- */
+.viewfinder {
+  position: relative;
+}
+
+.viewfinder::before,
+.viewfinder::after,
+.viewfinder .vf-tr,
+.viewfinder .vf-br {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--accent);
+  opacity: 0.9;
+  transition: all var(--dur-med) var(--ease-out);
+}
+
+.viewfinder::before { top: -1px; left: -1px; border-right: none; border-bottom: none; border-radius: 8px 0 0 0; }
+.viewfinder::after { bottom: -1px; left: -1px; border-right: none; border-top: none; border-radius: 0 0 0 8px; }
+
+/* ---- Reveal-on-scroll base state ---- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+  will-change: opacity, transform;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+[data-reveal-scale] {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out);
+}
+
+[data-reveal-scale].is-visible { opacity: 1; transform: scale(1); }
+
+/* Stagger children via inline --d custom property set by JS */
+[data-reveal] { transition-delay: var(--d, 0ms); }

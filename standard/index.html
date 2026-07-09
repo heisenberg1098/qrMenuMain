@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mare Bistro | Standart QR Menü Demosu</title>
+<meta name="description" content="Mare Bistro için hazırlanmış Standart QR menü demosu: fotoğraf galerisi, gerçek zamanlı arama ve kategori filtreleme ile tam kapsamlı dijital menü deneyimi.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0a0c10">
+<link rel="canonical" href="https://kayseriqrmenu.com/standard/">
+<link rel="icon" href="/assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/menu.css">
+
+<script>
+  (function () {
+    var t = localStorage.getItem("qrmenu-theme") || "dark";
+    document.documentElement.setAttribute("data-theme", t);
+  })();
+</script>
+</head>
+<body class="menu-body">
+
+<div class="page-loader" data-page-loader><div class="loader-mark"></div></div>
+
+<header class="site-header">
+  <div class="container nav-inner">
+    <a href="/" class="brand"><span class="brand-mark"></span>Mare Bistro</a>
+    <div class="nav-actions">
+      <button class="btn-icon theme-toggle" data-theme-toggle aria-label="Temayı değiştir">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+      <a href="/#paketler" class="btn btn-ghost btn-sm">← Paketlere Dön</a>
+    </div>
+  </div>
+</header>
+
+<main data-menu-root>
+  <section class="menu-hero container">
+    <div class="brand-mark"></div>
+    <h1>Mare Bistro</h1>
+    <p>Kayseri &middot; Standart QR Menü Demosu</p>
+    <span class="badge badge-chef tier-badge">Standart Paket · Fotoğraf Galerisi · Arama</span>
+  </section>
+
+  <div class="menu-toolbar">
+    <div class="container">
+      <div class="toolbar-row">
+        <label class="search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-3.5-3.5" stroke-linecap="round"/></svg>
+          <input type="text" data-search-input placeholder="Menüde ara...">
+        </label>
+      </div>
+      <div class="category-rail" data-category-rail></div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div data-menu-grid></div>
+    <div class="tier-note">
+      Bu demo Standart pakete aittir. Sipariş sistemi, garson çağırma, hesap isteme ve çoklu dil desteği <a href="/premium/">Premium pakette</a> aktiftir.
+    </div>
+  </div>
+</main>
+
+<div class="toast" data-toast></div>
+
+<!-- Product detail modal -->
+<div class="modal-overlay" data-modal>
+  <div class="modal-sheet">
+    <div class="modal-drag-handle"></div>
+    <div class="modal-image">
+      <button class="btn-icon modal-close" data-modal-close aria-label="Kapat">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <img data-modal-img src="" alt="">
+    </div>
+    <div class="modal-body">
+      <div data-modal-badges></div>
+      <h2 data-modal-title></h2>
+      <p class="modal-desc" data-modal-desc></p>
+      <div class="modal-price-row">
+        <span class="old" data-modal-old></span>
+        <span class="now" data-modal-now></span>
+      </div>
+      <div class="modal-kcal-row">
+        <div class="modal-kcal-item"><strong data-modal-kcal></strong>kalori</div>
+      </div>
+      <div data-modal-options></div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import { applyTheme, getStoredTheme, initThemeToggle } from "/assets/js/theme.js";
+  import { initReveal, initHeaderScrollState } from "/assets/js/reveal.js";
+  import { initPageLoader } from "/assets/js/nav.js";
+  import { initMenuApp } from "/assets/js/menu-app.js";
+
+  applyTheme(getStoredTheme() || "dark");
+  initThemeToggle();
+  initHeaderScrollState();
+  initPageLoader();
+  initReveal();
+
+  initMenuApp({
+    tier: "standard",
+    gallery: true,
+    languages: false,
+    options: false,
+    floatActions: false,
+  });
+</script>
+</body>
+</html>

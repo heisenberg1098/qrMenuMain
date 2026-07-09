@@ -1,0 +1,17 @@
+rules_version = '2';
+
+// Placeholder Firestore rules. Menu data is public read (customers scan a
+// QR code with no login) and write-protected to the admin panel only.
+// Tighten the write condition once the admin auth flow is built.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /products/{productId} {
+      allow read: if true;
+      allow write: if false; // TODO: restrict to authenticated restaurant-owner UID
+    }
+    match /restaurants/{restaurantId} {
+      allow read: if true;
+      allow write: if false; // TODO: restrict to authenticated restaurant-owner UID
+    }
+  }
+}
