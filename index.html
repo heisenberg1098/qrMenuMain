@@ -25,10 +25,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/assets/css/tokens.css">
-<link rel="stylesheet" href="/assets/css/base.css">
-<link rel="stylesheet" href="/assets/css/components.css">
-<link rel="stylesheet" href="/assets/css/home.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/home.css">
 
 <script>
   // Prevent flash-of-wrong-theme by applying stored preference before paint.
@@ -347,10 +347,10 @@
 </footer>
 
 <script type="module">
-  import { applyTheme, getStoredTheme, initThemeToggle } from "/assets/js/theme.js";
-  import { initReveal, initHeaderScrollState } from "/assets/js/reveal.js";
-  import { initMobileNav, initPageLoader } from "/assets/js/nav.js";
-  import { initHeroPhone } from "/assets/js/hero-phone.js";
+  import { applyTheme, getStoredTheme, initThemeToggle } from "assets/js/theme.js";
+  import { initReveal, initHeaderScrollState } from "assets/js/reveal.js";
+  import { initMobileNav, initPageLoader } from "assets/js/nav.js";
+  import { initHeroPhone } from "assets/js/hero-phone.js";
 
   applyTheme(getStoredTheme() || "dark");
   initThemeToggle();
