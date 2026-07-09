@@ -25,10 +25,10 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/css/tokens.css">
-<link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/components.css">
-<link rel="stylesheet" href="assets/css/home.css">
+<link rel="stylesheet" href="/assets/css/tokens.css">
+<link rel="stylesheet" href="/assets/css/base.css">
+<link rel="stylesheet" href="/assets/css/components.css">
+<link rel="stylesheet" href="/assets/css/home.css">
 
 <script>
   // Prevent flash-of-wrong-theme by applying stored preference before paint.
@@ -93,7 +93,6 @@
 </nav>
 
 <main>
-  <!-- ============ HERO ============ -->
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-copy" data-reveal>
@@ -129,7 +128,6 @@
     </div>
   </section>
 
-  <!-- ============ TRUST STRIP ============ -->
   <section class="trust-strip">
     <div class="container trust-row" data-reveal-group>
       <span class="trust-item" data-reveal>Aurora Kitchen</span>
@@ -140,7 +138,6 @@
     </div>
   </section>
 
-  <!-- ============ FEATURES ============ -->
   <section class="section" id="ozellikler">
     <div class="container">
       <div class="section-head" data-reveal>
@@ -204,7 +201,6 @@
     </div>
   </section>
 
-  <!-- ============ HOW IT WORKS ============ -->
   <section class="section" id="nasil-calisir">
     <div class="container">
       <div class="section-head" data-reveal>
@@ -228,7 +224,6 @@
     </div>
   </section>
 
-  <!-- ============ PRICING ============ -->
   <section class="section" id="paketler">
     <div class="container">
       <div class="section-head" data-reveal>
@@ -238,7 +233,6 @@
       </div>
 
       <div class="pricing-grid" data-reveal-group>
-        <!-- Starter -->
         <div class="price-card" data-reveal>
           <div class="price-card-head">
             <span class="plan-name">Başlangıç</span>
@@ -256,7 +250,6 @@
           <a href="/starter/" class="btn btn-ghost btn-block">Demoyu İncele</a>
         </div>
 
-        <!-- Standard -->
         <div class="price-card is-highlight" data-reveal>
           <div class="price-card-head">
             <span class="plan-name">Standart</span>
@@ -274,7 +267,6 @@
           <a href="/standard/" class="btn btn-primary btn-block">Demoyu İncele</a>
         </div>
 
-        <!-- Premium -->
         <div class="price-card" data-reveal>
           <div class="price-card-head">
             <span class="plan-name">Premium</span>
@@ -295,7 +287,6 @@
     </div>
   </section>
 
-  <!-- ============ FINAL CTA ============ -->
   <section class="section">
     <div class="container">
       <div class="cta-banner" data-reveal-scale>
@@ -347,10 +338,10 @@
 </footer>
 
 <script type="module">
-  import { applyTheme, getStoredTheme, initThemeToggle } from "assets/js/theme.js";
-  import { initReveal, initHeaderScrollState } from "assets/js/reveal.js";
-  import { initMobileNav, initPageLoader } from "assets/js/nav.js";
-  import { initHeroPhone } from "assets/js/hero-phone.js";
+  import { applyTheme, getStoredTheme, initThemeToggle } from "./assets/js/theme.js";
+  import { initReveal, initHeaderScrollState } from "./assets/js/reveal.js";
+  import { initMobileNav, initPageLoader } from "./assets/js/nav.js";
+  import { initHeroPhone } from "./assets/js/hero-phone.js";
 
   applyTheme(getStoredTheme() || "dark");
   initThemeToggle();
